@@ -5,23 +5,23 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
   imports: [CommonModule, FormsModule, RouterModule],
 })
-export class LoginComponent {
+export class RegisterComponent {
   username = '';
   password = '';
   errorMessage = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  onLogin() {
-    if (this.authService.login(this.username, this.password)) {
+  onRegister() {
+    if (this.authService.register(this.username, this.password)) {
       this.router.navigate(['/home']); // Redirect to home on success
     } else {
-      this.errorMessage = 'Invalid username or password';
+      this.errorMessage = 'Registration failed. Try again.';
     }
   }
 }
