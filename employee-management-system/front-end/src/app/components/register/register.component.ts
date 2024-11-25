@@ -12,13 +12,14 @@ import { FormsModule } from '@angular/forms';
 })
 export class RegisterComponent {
   username = '';
-  password = '';
+  newPassword = '';
+  confirmPassword = '';
   errorMessage = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
   onRegister() {
-    if (this.authService.register(this.username, this.password)) {
+    if (this.authService.register(this.username, this.newPassword)) {
       this.router.navigate(['/home']); // Redirect to home on success
     } else {
       this.errorMessage = 'Registration failed. Try again.';
